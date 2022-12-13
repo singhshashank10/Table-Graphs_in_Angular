@@ -1,0 +1,41 @@
+<!-- <p>table works!</p>
+<div class="talble">
+    <table ng-controller="myCtrl" border="2">
+        <tr>
+            <th>Name</th>
+            <th>Hour Worked</th>
+        </tr>
+        <tr *ngFor="let obj of newObject">
+            <td> {{obj.name}}</td>
+            <td> {{obj.time + ' Hours'}}</td>
+        </tr>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+            aria-label="Select page of periodic elements">
+        </mat-paginator>
+
+
+    </table>
+</div> -->
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element" [ngClass]="(element.time < 100) ? 'red':''"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Hours-Worked Column -->
+        <ng-container matColumnDef="hrs worked">
+            <th mat-header-cell *matHeaderCellDef> Hours Worked </th>
+            <td mat-cell *matCellDef="let element" [ngClass]="(element.time < 100) ? 'red':''"> {{element.time}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[10, 25, 50]" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+</div>
